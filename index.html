@@ -1,0 +1,3519 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_e12a687e7706fbca24598ff49952f3af {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="
+    position: fixed;
+    top: 10px;
+    left: 50px;
+    z-index: 9999;
+    background-color: white;
+    padding: 10px 14px;
+    border: 2px solid #666;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+">
+    MAPPA CLIENTI
+</div>
+    
+<div style="
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    z-index: 9999;
+    background-color: white;
+    padding: 12px;
+    border: 2px solid #666;
+    border-radius: 8px;
+    font-size: 14px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+">
+    <b>Legenda clienti</b><br>
+    <span style="color:lightblue;">●</span> 1 - 19<br>
+    <span style="color:green;">●</span> 20 - 49<br>
+    <span style="color:orange;">●</span> 50 - 99<br>
+    <span style="color:red;">●</span> 100 - 199<br>
+    <span style="color:darkred;">●</span> 200+<br>
+</div>
+    
+            <div class="folium-map" id="map_e12a687e7706fbca24598ff49952f3af" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_e12a687e7706fbca24598ff49952f3af = L.map(
+                "map_e12a687e7706fbca24598ff49952f3af",
+                {
+                    center: [42.5, 13.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 6,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_5244a191778a6fb5afe6acf130a33073 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_5244a191778a6fb5afe6acf130a33073.addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var marker_e06cf20647bcaee4ff8c9cc7e90fb3dd = L.marker(
+                [44.5168753, 11.3244346],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_c781aaa3ee0385c0d2d88ee22404a0b5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkred",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0266d665d2f03e85e784ba3b7f74f8c5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d409d928a58a4922dac8d73b7b6e0352 = $(`<div id="html_d409d928a58a4922dac8d73b7b6e0352" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Quartiere Navile, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40131<br>         Clienti: <b>345</b>     </div>     </div>`)[0];
+                popup_0266d665d2f03e85e784ba3b7f74f8c5.setContent(html_d409d928a58a4922dac8d73b7b6e0352);
+            
+        
+
+        marker_e06cf20647bcaee4ff8c9cc7e90fb3dd.bindPopup(popup_0266d665d2f03e85e784ba3b7f74f8c5)
+        ;
+
+        
+    
+    
+                marker_e06cf20647bcaee4ff8c9cc7e90fb3dd.setIcon(icon_c781aaa3ee0385c0d2d88ee22404a0b5);
+            
+    
+            var marker_665bfae85de71edf8b2e3483298ff5bf = L.marker(
+                [44.5187046, 11.3439653],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_109be1be946bb972885665276af1b20a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cd93a55fb8a0b850ac6d9f880eaae7e0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_570a5a2198a8bb4431bf15e3b04fa3a5 = $(`<div id="html_570a5a2198a8bb4431bf15e3b04fa3a5" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Quartiere Navile, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40129<br>         Clienti: <b>136</b>     </div>     </div>`)[0];
+                popup_cd93a55fb8a0b850ac6d9f880eaae7e0.setContent(html_570a5a2198a8bb4431bf15e3b04fa3a5);
+            
+        
+
+        marker_665bfae85de71edf8b2e3483298ff5bf.bindPopup(popup_cd93a55fb8a0b850ac6d9f880eaae7e0)
+        ;
+
+        
+    
+    
+                marker_665bfae85de71edf8b2e3483298ff5bf.setIcon(icon_109be1be946bb972885665276af1b20a);
+            
+    
+            var marker_8dbac24f4ccf495f4e2ee985497dd8eb = L.marker(
+                [44.5274642, 11.355228],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_f1660a1c90ebd46fd613e0efb819f9b4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2c8fbd392c5e83a8a82e9d39f69d1bdd = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_afb755260048aa3ed30c26a9a7cc7888 = $(`<div id="html_afb755260048aa3ed30c26a9a7cc7888" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Quartiere Navile, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40128<br>         Clienti: <b>104</b>     </div>     </div>`)[0];
+                popup_2c8fbd392c5e83a8a82e9d39f69d1bdd.setContent(html_afb755260048aa3ed30c26a9a7cc7888);
+            
+        
+
+        marker_8dbac24f4ccf495f4e2ee985497dd8eb.bindPopup(popup_2c8fbd392c5e83a8a82e9d39f69d1bdd)
+        ;
+
+        
+    
+    
+                marker_8dbac24f4ccf495f4e2ee985497dd8eb.setIcon(icon_f1660a1c90ebd46fd613e0efb819f9b4);
+            
+    
+            var marker_86bf07c2bd876184c1955bc40464048e = L.marker(
+                [44.5656365, 11.3661069],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_be3ee1af448ef62792fefb0ad7ca93bd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_60aefe59b8ab31650ad2e465bcacd28d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d5d4af6c0f9a857236ec21c4fcea990e = $(`<div id="html_d5d4af6c0f9a857236ec21c4fcea990e" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Castel Maggiore, Unione Reno Galliera, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40013<br>         Clienti: <b>51</b>     </div>     </div>`)[0];
+                popup_60aefe59b8ab31650ad2e465bcacd28d.setContent(html_d5d4af6c0f9a857236ec21c4fcea990e);
+            
+        
+
+        marker_86bf07c2bd876184c1955bc40464048e.bindPopup(popup_60aefe59b8ab31650ad2e465bcacd28d)
+        ;
+
+        
+    
+    
+                marker_86bf07c2bd876184c1955bc40464048e.setIcon(icon_be3ee1af448ef62792fefb0ad7ca93bd);
+            
+    
+            var marker_7d18e7cab98cd7be7527601df96e3590 = L.marker(
+                [44.5027379, 11.2985906],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_14b4abd82d54c4613dc51b5979b08037 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d2b15eac804d8022fd93e73b5e8393c6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_aaf1e10198a66509328ef770d9d8a6de = $(`<div id="html_aaf1e10198a66509328ef770d9d8a6de" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Borgo Panigale-Reno, Casteldebole, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40133<br>         Clienti: <b>39</b>     </div>     </div>`)[0];
+                popup_d2b15eac804d8022fd93e73b5e8393c6.setContent(html_aaf1e10198a66509328ef770d9d8a6de);
+            
+        
+
+        marker_7d18e7cab98cd7be7527601df96e3590.bindPopup(popup_d2b15eac804d8022fd93e73b5e8393c6)
+        ;
+
+        
+    
+    
+                marker_7d18e7cab98cd7be7527601df96e3590.setIcon(icon_14b4abd82d54c4613dc51b5979b08037);
+            
+    
+            var marker_f03a216483bc43e86c272c7415814673 = L.marker(
+                [44.4512529, 11.2725447],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_b2e1d62dd3f8cd6e1bdb6f06061ba68b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_22e18fa58502cb6657b5cf6f86cf0a39 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_88422265cf6dd6276ed533d1e4cb8242 = $(`<div id="html_88422265cf6dd6276ed533d1e4cb8242" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Casalecchio di Reno, Unione dei comuni Valli del Reno, Lavino e Samoggia, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40050<br>         Clienti: <b>32</b>     </div>     </div>`)[0];
+                popup_22e18fa58502cb6657b5cf6f86cf0a39.setContent(html_88422265cf6dd6276ed533d1e4cb8242);
+            
+        
+
+        marker_f03a216483bc43e86c272c7415814673.bindPopup(popup_22e18fa58502cb6657b5cf6f86cf0a39)
+        ;
+
+        
+    
+    
+                marker_f03a216483bc43e86c272c7415814673.setIcon(icon_b2e1d62dd3f8cd6e1bdb6f06061ba68b);
+            
+    
+            var marker_dc8723b4eb085deab25726fdfbce20f2 = L.marker(
+                [44.5174879, 11.2754334],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_9b4c20521e1ad1d9ef52c82950dd966f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d373963bf08040c085b72cfbf5ccaef5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_55fc4d8c45b4de10234a1fab658690b2 = $(`<div id="html_55fc4d8c45b4de10234a1fab658690b2" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Borgo Panigale-Reno, Casteldebole, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40132<br>         Clienti: <b>17</b>     </div>     </div>`)[0];
+                popup_d373963bf08040c085b72cfbf5ccaef5.setContent(html_55fc4d8c45b4de10234a1fab658690b2);
+            
+        
+
+        marker_dc8723b4eb085deab25726fdfbce20f2.bindPopup(popup_d373963bf08040c085b72cfbf5ccaef5)
+        ;
+
+        
+    
+    
+                marker_dc8723b4eb085deab25726fdfbce20f2.setIcon(icon_9b4c20521e1ad1d9ef52c82950dd966f);
+            
+    
+            var marker_ba70329d7b500cdef6b897ac4b848629 = L.marker(
+                [44.5094782, 11.3787647],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_af939018cc64ca8dc3013c9fa936247d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6218d25529c07fbb8e57f66f65ccc060 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b09fc46db5e830b6fef4be9a214898ce = $(`<div id="html_b09fc46db5e830b6fef4be9a214898ce" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 San Donato-San Vitale, San Sisto, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40127<br>         Clienti: <b>15</b>     </div>     </div>`)[0];
+                popup_6218d25529c07fbb8e57f66f65ccc060.setContent(html_b09fc46db5e830b6fef4be9a214898ce);
+            
+        
+
+        marker_ba70329d7b500cdef6b897ac4b848629.bindPopup(popup_6218d25529c07fbb8e57f66f65ccc060)
+        ;
+
+        
+    
+    
+                marker_ba70329d7b500cdef6b897ac4b848629.setIcon(icon_af939018cc64ca8dc3013c9fa936247d);
+            
+    
+            var marker_6535330b552b6f7e16a02e4753d44877 = L.marker(
+                [44.481986, 11.2662666],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_63b2f20719883f4aa5cdef92ede07fca = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_70fe049f480e2437c3a437de4464fe84 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_88b989b1550022020795f4b289528a12 = $(`<div id="html_88b989b1550022020795f4b289528a12" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Casalecchio di Reno, Unione dei comuni Valli del Reno, Lavino e Samoggia, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40033<br>         Clienti: <b>11</b>     </div>     </div>`)[0];
+                popup_70fe049f480e2437c3a437de4464fe84.setContent(html_88b989b1550022020795f4b289528a12);
+            
+        
+
+        marker_6535330b552b6f7e16a02e4753d44877.bindPopup(popup_70fe049f480e2437c3a437de4464fe84)
+        ;
+
+        
+    
+    
+                marker_6535330b552b6f7e16a02e4753d44877.setIcon(icon_63b2f20719883f4aa5cdef92ede07fca);
+            
+    
+            var marker_12807a98a2ddc557297147452c23758e = L.marker(
+                [44.4944411, 11.381561],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_7ef45aa46fdec7672030da643ba6fa35 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_66ee800d034eb9271b7205bc072c797c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_7e15a4f95f22d976d1f2abb381af003e = $(`<div id="html_7e15a4f95f22d976d1f2abb381af003e" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 San Donato-San Vitale, San Sisto, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40138<br>         Clienti: <b>10</b>     </div>     </div>`)[0];
+                popup_66ee800d034eb9271b7205bc072c797c.setContent(html_7e15a4f95f22d976d1f2abb381af003e);
+            
+        
+
+        marker_12807a98a2ddc557297147452c23758e.bindPopup(popup_66ee800d034eb9271b7205bc072c797c)
+        ;
+
+        
+    
+    
+                marker_12807a98a2ddc557297147452c23758e.setIcon(icon_7ef45aa46fdec7672030da643ba6fa35);
+            
+    
+            var marker_b7a04a297e08be00c00ee484274b593c = L.marker(
+                [44.551477, 11.4297244],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_d00263b09ca7eda105466247b453a500 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_45008670006e49e7883d639ead5a03ff = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_23f2c33fb5806fd5c34eeb7b2447c41f = $(`<div id="html_23f2c33fb5806fd5c34eeb7b2447c41f" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Granarolo dell'Emilia, Unione Terre di Pianura, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40057<br>         Clienti: <b>9</b>     </div>     </div>`)[0];
+                popup_45008670006e49e7883d639ead5a03ff.setContent(html_23f2c33fb5806fd5c34eeb7b2447c41f);
+            
+        
+
+        marker_b7a04a297e08be00c00ee484274b593c.bindPopup(popup_45008670006e49e7883d639ead5a03ff)
+        ;
+
+        
+    
+    
+                marker_b7a04a297e08be00c00ee484274b593c.setIcon(icon_d00263b09ca7eda105466247b453a500);
+            
+    
+            var marker_27e6633f26a5bfb2d53ade6859c673ea = L.marker(
+                [44.663349, 11.3768966],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_e04df7866d6b5746e253bae37eefd413 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0f0f9b4b8d53f1c776b60f06e38ef6d3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5e62c52bd02fafbccd7f2e599b2bb23d = $(`<div id="html_5e62c52bd02fafbccd7f2e599b2bb23d" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 San Giorgio di Piano, Unione Reno Galliera, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40016<br>         Clienti: <b>8</b>     </div>     </div>`)[0];
+                popup_0f0f9b4b8d53f1c776b60f06e38ef6d3.setContent(html_5e62c52bd02fafbccd7f2e599b2bb23d);
+            
+        
+
+        marker_27e6633f26a5bfb2d53ade6859c673ea.bindPopup(popup_0f0f9b4b8d53f1c776b60f06e38ef6d3)
+        ;
+
+        
+    
+    
+                marker_27e6633f26a5bfb2d53ade6859c673ea.setIcon(icon_e04df7866d6b5746e253bae37eefd413);
+            
+    
+            var marker_93c7672261fea1f649ca4766447a8302 = L.marker(
+                [44.6756098, 11.4182998],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_9b222ca80c3527d6c67a1ea9074046a2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c5847c759625653d9be1c27a53b975c1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b55f706bff46c606cd5d09ec7dc20f63 = $(`<div id="html_b55f706bff46c606cd5d09ec7dc20f63" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 San Pietro in Casale, Unione Reno Galliera, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40018<br>         Clienti: <b>8</b>     </div>     </div>`)[0];
+                popup_c5847c759625653d9be1c27a53b975c1.setContent(html_b55f706bff46c606cd5d09ec7dc20f63);
+            
+        
+
+        marker_93c7672261fea1f649ca4766447a8302.bindPopup(popup_c5847c759625653d9be1c27a53b975c1)
+        ;
+
+        
+    
+    
+                marker_93c7672261fea1f649ca4766447a8302.setIcon(icon_9b222ca80c3527d6c67a1ea9074046a2);
+            
+    
+            var marker_62f05780b04e76432b9b3dd43454cc4f = L.marker(
+                [44.4982168, 11.3336734],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_593542e773241677498c59b698a551e8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fa89819566c970f4c6f0915ff4c3417e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d47dd56bcab51c5f060aa6676f0750aa = $(`<div id="html_d47dd56bcab51c5f060aa6676f0750aa" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Porto-Saragozza, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40122<br>         Clienti: <b>8</b>     </div>     </div>`)[0];
+                popup_fa89819566c970f4c6f0915ff4c3417e.setContent(html_d47dd56bcab51c5f060aa6676f0750aa);
+            
+        
+
+        marker_62f05780b04e76432b9b3dd43454cc4f.bindPopup(popup_fa89819566c970f4c6f0915ff4c3417e)
+        ;
+
+        
+    
+    
+                marker_62f05780b04e76432b9b3dd43454cc4f.setIcon(icon_593542e773241677498c59b698a551e8);
+            
+    
+            var marker_dd3cc49ade523bae602d32cc260e25fb = L.marker(
+                [44.4783745, 11.3851574],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_d9e3bc0014d530759f556fe7aedbe159 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9cc1032f3f34abfe6fb61b96d071ca2d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6c20569e1515cb3f880393701e0017f8 = $(`<div id="html_6c20569e1515cb3f880393701e0017f8" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Savena, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40139<br>         Clienti: <b>7</b>     </div>     </div>`)[0];
+                popup_9cc1032f3f34abfe6fb61b96d071ca2d.setContent(html_6c20569e1515cb3f880393701e0017f8);
+            
+        
+
+        marker_dd3cc49ade523bae602d32cc260e25fb.bindPopup(popup_9cc1032f3f34abfe6fb61b96d071ca2d)
+        ;
+
+        
+    
+    
+                marker_dd3cc49ade523bae602d32cc260e25fb.setIcon(icon_d9e3bc0014d530759f556fe7aedbe159);
+            
+    
+            var marker_04b52ae02c3a737471f64253ed532726 = L.marker(
+                [44.4937394, 11.3183036],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_c2834b1a70ea2e81f336f93b0289ed59 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_76f2c5ae7a2627bd80c125a860cf446b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_27aacd5b86c9264de41d10b5290e6aa2 = $(`<div id="html_27aacd5b86c9264de41d10b5290e6aa2" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Porto-Saragozza, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40134<br>         Clienti: <b>7</b>     </div>     </div>`)[0];
+                popup_76f2c5ae7a2627bd80c125a860cf446b.setContent(html_27aacd5b86c9264de41d10b5290e6aa2);
+            
+        
+
+        marker_04b52ae02c3a737471f64253ed532726.bindPopup(popup_76f2c5ae7a2627bd80c125a860cf446b)
+        ;
+
+        
+    
+    
+                marker_04b52ae02c3a737471f64253ed532726.setIcon(icon_c2834b1a70ea2e81f336f93b0289ed59);
+            
+    
+            var marker_aed1a8dd069c3c876f4253ee1e17ea75 = L.marker(
+                [44.6187736, 11.3498452],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_0c3b2fe2a4571c34a2f63b5cce211514 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a9dff4d77926ee8d619152350037ab7b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_11db9e408be264c5aa597760d6d585f4 = $(`<div id="html_11db9e408be264c5aa597760d6d585f4" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 San Giorgio di Piano, Unione Reno Galliera, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40010<br>         Clienti: <b>7</b>     </div>     </div>`)[0];
+                popup_a9dff4d77926ee8d619152350037ab7b.setContent(html_11db9e408be264c5aa597760d6d585f4);
+            
+        
+
+        marker_aed1a8dd069c3c876f4253ee1e17ea75.bindPopup(popup_a9dff4d77926ee8d619152350037ab7b)
+        ;
+
+        
+    
+    
+                marker_aed1a8dd069c3c876f4253ee1e17ea75.setIcon(icon_0c3b2fe2a4571c34a2f63b5cce211514);
+            
+    
+            var marker_8ba35fdbc89743330211cf5d9f8bc1ce = L.marker(
+                [44.4849266, 11.3102429],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_f4900ccf5a494b90b35421dd3f1315b1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e76bf09e7a4d1ca7030c0f5afe220875 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_21c654e67fe19fb082ff3b74fcc36d1f = $(`<div id="html_21c654e67fe19fb082ff3b74fcc36d1f" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Porto-Saragozza, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40135<br>         Clienti: <b>6</b>     </div>     </div>`)[0];
+                popup_e76bf09e7a4d1ca7030c0f5afe220875.setContent(html_21c654e67fe19fb082ff3b74fcc36d1f);
+            
+        
+
+        marker_8ba35fdbc89743330211cf5d9f8bc1ce.bindPopup(popup_e76bf09e7a4d1ca7030c0f5afe220875)
+        ;
+
+        
+    
+    
+                marker_8ba35fdbc89743330211cf5d9f8bc1ce.setIcon(icon_f4900ccf5a494b90b35421dd3f1315b1);
+            
+    
+            var marker_c918d508c0b7a495109508269751e519 = L.marker(
+                [44.4962032, 11.3440645],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_eb0763e350df450a7878fd4155d17cfc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e16fc40c1e779b3f67b68efde70abe1c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b5cb6b7fa9189658bec33548635e57c6 = $(`<div id="html_b5cb6b7fa9189658bec33548635e57c6" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Santo Stefano, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40121<br>         Clienti: <b>6</b>     </div>     </div>`)[0];
+                popup_e16fc40c1e779b3f67b68efde70abe1c.setContent(html_b5cb6b7fa9189658bec33548635e57c6);
+            
+        
+
+        marker_c918d508c0b7a495109508269751e519.bindPopup(popup_e16fc40c1e779b3f67b68efde70abe1c)
+        ;
+
+        
+    
+    
+                marker_c918d508c0b7a495109508269751e519.setIcon(icon_eb0763e350df450a7878fd4155d17cfc);
+            
+    
+            var marker_66468e3f66cefc95b0a4bafa5a1aa60f = L.marker(
+                [44.5544598, 11.2774438],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_3ea51c546bb034094ad3286996313613 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a4e84a62da16c6d764f1c004096fee5a = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_34f8d707afdcb33253e983c4ee559630 = $(`<div id="html_34f8d707afdcb33253e983c4ee559630" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Calderara di Reno, Unione Terre d'Acqua, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40012<br>         Clienti: <b>6</b>     </div>     </div>`)[0];
+                popup_a4e84a62da16c6d764f1c004096fee5a.setContent(html_34f8d707afdcb33253e983c4ee559630);
+            
+        
+
+        marker_66468e3f66cefc95b0a4bafa5a1aa60f.bindPopup(popup_a4e84a62da16c6d764f1c004096fee5a)
+        ;
+
+        
+    
+    
+                marker_66468e3f66cefc95b0a4bafa5a1aa60f.setIcon(icon_3ea51c546bb034094ad3286996313613);
+            
+    
+            var marker_545f8293050323f0e1e70355f22db999 = L.marker(
+                [44.4802778, 11.3653293],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_733912b06ab1f22a4b107cd5fcb9b5e6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_37e339e66a895db79838571743c6cdb7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8afc992656b95f908103996ccbdbbafa = $(`<div id="html_8afc992656b95f908103996ccbdbbafa" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Santo Stefano, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40137<br>         Clienti: <b>6</b>     </div>     </div>`)[0];
+                popup_37e339e66a895db79838571743c6cdb7.setContent(html_8afc992656b95f908103996ccbdbbafa);
+            
+        
+
+        marker_545f8293050323f0e1e70355f22db999.bindPopup(popup_37e339e66a895db79838571743c6cdb7)
+        ;
+
+        
+    
+    
+                marker_545f8293050323f0e1e70355f22db999.setIcon(icon_733912b06ab1f22a4b107cd5fcb9b5e6);
+            
+    
+            var marker_8ac47abcb080cdeb26de2480b7f871f8 = L.marker(
+                [44.5000833, 11.4426514],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_1c198400ecbe13ce354277d9e290ff70 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_606bd8d40ec0833e732bdb5f5f5f4622 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a38837d964aa31b6f78b95d6134476c5 = $(`<div id="html_a38837d964aa31b6f78b95d6134476c5" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Castenaso, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40055<br>         Clienti: <b>6</b>     </div>     </div>`)[0];
+                popup_606bd8d40ec0833e732bdb5f5f5f4622.setContent(html_a38837d964aa31b6f78b95d6134476c5);
+            
+        
+
+        marker_8ac47abcb080cdeb26de2480b7f871f8.bindPopup(popup_606bd8d40ec0833e732bdb5f5f5f4622)
+        ;
+
+        
+    
+    
+                marker_8ac47abcb080cdeb26de2480b7f871f8.setIcon(icon_1c198400ecbe13ce354277d9e290ff70);
+            
+    
+            var marker_a0fda5fadf484fbcd0749ad2a4ab877f = L.marker(
+                [44.4978833, 11.3499223],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_26c64ba91071699f98edf204376110ab = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f65321583d92386b22070c1f330c11d1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_37a51c656c102052433e1d7e4b94f86b = $(`<div id="html_37a51c656c102052433e1d7e4b94f86b" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Santo Stefano, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40126<br>         Clienti: <b>5</b>     </div>     </div>`)[0];
+                popup_f65321583d92386b22070c1f330c11d1.setContent(html_37a51c656c102052433e1d7e4b94f86b);
+            
+        
+
+        marker_a0fda5fadf484fbcd0749ad2a4ab877f.bindPopup(popup_f65321583d92386b22070c1f330c11d1)
+        ;
+
+        
+    
+    
+                marker_a0fda5fadf484fbcd0749ad2a4ab877f.setIcon(icon_26c64ba91071699f98edf204376110ab);
+            
+    
+            var marker_89886cbd89139382ec443fd8dd74b758 = L.marker(
+                [44.6237993, 11.4897224],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_42edb37c14bec7a8106565b04a6f15a1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8bc80cc1529a82dfaa102b5b3bf32fbc = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_217a6a9ba2c9ac14ccb6e1399992801c = $(`<div id="html_217a6a9ba2c9ac14ccb6e1399992801c" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Minerbio, Unione Terre di Pianura, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40061<br>         Clienti: <b>4</b>     </div>     </div>`)[0];
+                popup_8bc80cc1529a82dfaa102b5b3bf32fbc.setContent(html_217a6a9ba2c9ac14ccb6e1399992801c);
+            
+        
+
+        marker_89886cbd89139382ec443fd8dd74b758.bindPopup(popup_8bc80cc1529a82dfaa102b5b3bf32fbc)
+        ;
+
+        
+    
+    
+                marker_89886cbd89139382ec443fd8dd74b758.setIcon(icon_42edb37c14bec7a8106565b04a6f15a1);
+            
+    
+            var marker_0edb4333d9e651274fbe7fe783a45b72 = L.marker(
+                [44.4620901, 11.3688494],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_c3b453b7f032f8f33ba8dcf23da859ee = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_06fb4b3a03ef96f304154c26934a5122 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_bb4e33b6b233ef351c89bdd286f5a55c = $(`<div id="html_bb4e33b6b233ef351c89bdd286f5a55c" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Savena, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40141<br>         Clienti: <b>4</b>     </div>     </div>`)[0];
+                popup_06fb4b3a03ef96f304154c26934a5122.setContent(html_bb4e33b6b233ef351c89bdd286f5a55c);
+            
+        
+
+        marker_0edb4333d9e651274fbe7fe783a45b72.bindPopup(popup_06fb4b3a03ef96f304154c26934a5122)
+        ;
+
+        
+    
+    
+                marker_0edb4333d9e651274fbe7fe783a45b72.setIcon(icon_c3b453b7f032f8f33ba8dcf23da859ee);
+            
+    
+            var marker_e9ab4d88931b447350c6d1e02ed48f01 = L.marker(
+                [44.4954261, 11.3483465],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_e09cf33966eab7091e060e16ab1b1e45 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f6ef88e052621342c220cc711beb1596 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_40a8ab9bbad4af3d3d0674baaf37fefd = $(`<div id="html_40a8ab9bbad4af3d3d0674baaf37fefd" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Santo Stefano, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40100<br>         Clienti: <b>4</b>     </div>     </div>`)[0];
+                popup_f6ef88e052621342c220cc711beb1596.setContent(html_40a8ab9bbad4af3d3d0674baaf37fefd);
+            
+        
+
+        marker_e9ab4d88931b447350c6d1e02ed48f01.bindPopup(popup_f6ef88e052621342c220cc711beb1596)
+        ;
+
+        
+    
+    
+                marker_e9ab4d88931b447350c6d1e02ed48f01.setIcon(icon_e09cf33966eab7091e060e16ab1b1e45);
+            
+    
+            var marker_11cbb6f97c6cc0cc741757a33c7b2435 = L.marker(
+                [44.5197201, 11.1417871],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_7dedd720214972d6464d6b126ba16525 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c0decea3fdeddd51635d2084f27cb2eb = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_282dc29d1fab40cd6a3e3a464d92058b = $(`<div id="html_282dc29d1fab40cd6a3e3a464d92058b" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Crespellano, Pragatto, Valsamoggia, Unione dei comuni Valli del Reno, Lavino e Samoggia, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40056<br>         Clienti: <b>4</b>     </div>     </div>`)[0];
+                popup_c0decea3fdeddd51635d2084f27cb2eb.setContent(html_282dc29d1fab40cd6a3e3a464d92058b);
+            
+        
+
+        marker_11cbb6f97c6cc0cc741757a33c7b2435.bindPopup(popup_c0decea3fdeddd51635d2084f27cb2eb)
+        ;
+
+        
+    
+    
+                marker_11cbb6f97c6cc0cc741757a33c7b2435.setIcon(icon_7dedd720214972d6464d6b126ba16525);
+            
+    
+            var marker_eb40b489b448305af7e7c55e40fa3207 = L.marker(
+                [44.5940402, 11.0549],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_0e4c22f00df0b5f5d58bf161451b0c61 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b7262247f66a66d6bd1b88b31698ef73 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_dd0e1e8a6d96df781508881627d164ec = $(`<div id="html_dd0e1e8a6d96df781508881627d164ec" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Castelfranco Emilia, Unione dei comuni del Sorbara, Modena, Emilia-Romagna, Italia</b><br>         CAP: 41013<br>         Clienti: <b>3</b>     </div>     </div>`)[0];
+                popup_b7262247f66a66d6bd1b88b31698ef73.setContent(html_dd0e1e8a6d96df781508881627d164ec);
+            
+        
+
+        marker_eb40b489b448305af7e7c55e40fa3207.bindPopup(popup_b7262247f66a66d6bd1b88b31698ef73)
+        ;
+
+        
+    
+    
+                marker_eb40b489b448305af7e7c55e40fa3207.setIcon(icon_0e4c22f00df0b5f5d58bf161451b0c61);
+            
+    
+            var marker_cce15e3d413ea6c0b15ba7bbdf3704a2 = L.marker(
+                [44.7378901, 11.2913165],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_7be61846a0e4f5d7dfd8f5a4fd4c66da = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3476b33fb904b4d2731042de3a71b15f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_60350ee4d07c1e62e1db40b8abbe58c2 = $(`<div id="html_60350ee4d07c1e62e1db40b8abbe58c2" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Cento, Unione Alto Ferrarese, Ferrara, Emilia-Romagna, Italia</b><br>         CAP: 44042<br>         Clienti: <b>3</b>     </div>     </div>`)[0];
+                popup_3476b33fb904b4d2731042de3a71b15f.setContent(html_60350ee4d07c1e62e1db40b8abbe58c2);
+            
+        
+
+        marker_cce15e3d413ea6c0b15ba7bbdf3704a2.bindPopup(popup_3476b33fb904b4d2731042de3a71b15f)
+        ;
+
+        
+    
+    
+                marker_cce15e3d413ea6c0b15ba7bbdf3704a2.setIcon(icon_7be61846a0e4f5d7dfd8f5a4fd4c66da);
+            
+    
+            var marker_25fc55a5796a6759820d80c17c52e172 = L.marker(
+                [44.4864325, 11.6343399],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_2efb1f8e2ac0f008b881fd6545db89af = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9992fef939b005c8838f25ce830bb7e0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_830515b1225a7c1cd14f0ddf6b11a746 = $(`<div id="html_830515b1225a7c1cd14f0ddf6b11a746" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Medicina, Nuovo Circondario Imolese, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40059<br>         Clienti: <b>3</b>     </div>     </div>`)[0];
+                popup_9992fef939b005c8838f25ce830bb7e0.setContent(html_830515b1225a7c1cd14f0ddf6b11a746);
+            
+        
+
+        marker_25fc55a5796a6759820d80c17c52e172.bindPopup(popup_9992fef939b005c8838f25ce830bb7e0)
+        ;
+
+        
+    
+    
+                marker_25fc55a5796a6759820d80c17c52e172.setIcon(icon_2efb1f8e2ac0f008b881fd6545db89af);
+            
+    
+            var marker_b73470e205a584f1b7735e3210895014 = L.marker(
+                [44.746115, 11.4223064],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_14ba6b733d2265620363af2e3f263625 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6d92e67efb6258933a0d3006ab3bf885 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_eab13ebb241f887a9ebeb74d544a3430 = $(`<div id="html_eab13ebb241f887a9ebeb74d544a3430" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Galliera, Unione Reno Galliera, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40015<br>         Clienti: <b>3</b>     </div>     </div>`)[0];
+                popup_6d92e67efb6258933a0d3006ab3bf885.setContent(html_eab13ebb241f887a9ebeb74d544a3430);
+            
+        
+
+        marker_b73470e205a584f1b7735e3210895014.bindPopup(popup_6d92e67efb6258933a0d3006ab3bf885)
+        ;
+
+        
+    
+    
+                marker_b73470e205a584f1b7735e3210895014.setIcon(icon_14ba6b733d2265620363af2e3f263625);
+            
+    
+            var marker_13835791fa1d19313378d11c296497c5 = L.marker(
+                [44.4931435, 11.2141464],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_d918ba7cc842ef424ac322f1d54d95d0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_077bf54a3cc3334854aaecbdb1b8a73b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e632e74377dcc4e1e4a3e7312b8be132 = $(`<div id="html_e632e74377dcc4e1e4a3e7312b8be132" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Zola Predosa, Unione dei comuni Valli del Reno, Lavino e Samoggia, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40069<br>         Clienti: <b>3</b>     </div>     </div>`)[0];
+                popup_077bf54a3cc3334854aaecbdb1b8a73b.setContent(html_e632e74377dcc4e1e4a3e7312b8be132);
+            
+        
+
+        marker_13835791fa1d19313378d11c296497c5.bindPopup(popup_077bf54a3cc3334854aaecbdb1b8a73b)
+        ;
+
+        
+    
+    
+                marker_13835791fa1d19313378d11c296497c5.setIcon(icon_d918ba7cc842ef424ac322f1d54d95d0);
+            
+    
+            var marker_3a4670236861bb550ce9914350afe2e4 = L.marker(
+                [44.6770472, 10.6119678],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_c98f822c1f5609c5ec40951aa5cdfb39 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c65b980877cfc73df9edb0a804a3de98 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_75b7e2e35ded1c80e212fbac4c41b512 = $(`<div id="html_75b7e2e35ded1c80e212fbac4c41b512" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Belvedere, Reggio Emilia, Reggio nell'Emilia, Emilia-Romagna, Italia</b><br>         CAP: 42123<br>         Clienti: <b>2</b>     </div>     </div>`)[0];
+                popup_c65b980877cfc73df9edb0a804a3de98.setContent(html_75b7e2e35ded1c80e212fbac4c41b512);
+            
+        
+
+        marker_3a4670236861bb550ce9914350afe2e4.bindPopup(popup_c65b980877cfc73df9edb0a804a3de98)
+        ;
+
+        
+    
+    
+                marker_3a4670236861bb550ce9914350afe2e4.setIcon(icon_c98f822c1f5609c5ec40951aa5cdfb39);
+            
+    
+            var marker_9b0578c9933ce620e232db64acebef87 = L.marker(
+                [44.4660686, 11.4157988],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_04f75b96bdfa2269840cfcdd112f538a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fbc0ab77ad4d3d49bcfd8e4f64a97f8b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_900192c6641003572fea6c56ce2d20b1 = $(`<div id="html_900192c6641003572fea6c56ce2d20b1" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 San Lazzaro di Savena, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40068<br>         Clienti: <b>2</b>     </div>     </div>`)[0];
+                popup_fbc0ab77ad4d3d49bcfd8e4f64a97f8b.setContent(html_900192c6641003572fea6c56ce2d20b1);
+            
+        
+
+        marker_9b0578c9933ce620e232db64acebef87.bindPopup(popup_fbc0ab77ad4d3d49bcfd8e4f64a97f8b)
+        ;
+
+        
+    
+    
+                marker_9b0578c9933ce620e232db64acebef87.setIcon(icon_04f75b96bdfa2269840cfcdd112f538a);
+            
+    
+            var marker_7f5425ba1207fa521f45ec099e5fdae1 = L.marker(
+                [44.440163, 11.4886721],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_0a11fce850871cfbca62ac8421453b66 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c497f13d0978e989aa2c0dafb8c805a9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a768111efb2aceea180f9721eb0ead0a = $(`<div id="html_a768111efb2aceea180f9721eb0ead0a" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Ozzano dell'Emilia, Unione dei comuni Savena-Idice, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40064<br>         Clienti: <b>2</b>     </div>     </div>`)[0];
+                popup_c497f13d0978e989aa2c0dafb8c805a9.setContent(html_a768111efb2aceea180f9721eb0ead0a);
+            
+        
+
+        marker_7f5425ba1207fa521f45ec099e5fdae1.bindPopup(popup_c497f13d0978e989aa2c0dafb8c805a9)
+        ;
+
+        
+    
+    
+                marker_7f5425ba1207fa521f45ec099e5fdae1.setIcon(icon_0a11fce850871cfbca62ac8421453b66);
+            
+    
+            var marker_4ab783582b18b81552aea16b1a7f1cb0 = L.marker(
+                [44.5405757, 11.5355723],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_85f39d20c9d2941a88aadb0a474ce987 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7b92da1e8c137fe8cd546811e154ab99 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6b8daca4271a5f7bc6a07649d35faf02 = $(`<div id="html_6b8daca4271a5f7bc6a07649d35faf02" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Budrio, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40054<br>         Clienti: <b>2</b>     </div>     </div>`)[0];
+                popup_7b92da1e8c137fe8cd546811e154ab99.setContent(html_6b8daca4271a5f7bc6a07649d35faf02);
+            
+        
+
+        marker_4ab783582b18b81552aea16b1a7f1cb0.bindPopup(popup_7b92da1e8c137fe8cd546811e154ab99)
+        ;
+
+        
+    
+    
+                marker_4ab783582b18b81552aea16b1a7f1cb0.setIcon(icon_85f39d20c9d2941a88aadb0a474ce987);
+            
+    
+            var marker_808de3ea6dd9d3c1a85d3446d36bb96a = L.marker(
+                [44.3268593, 11.0625599],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_12b4e480ea45d8a17da8aa37feb75194 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e9ef981fc035655942880e2ceb09f964 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5b45508da22fd6ae763f4aeaee5abcce = $(`<div id="html_5b45508da22fd6ae763f4aeaee5abcce" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Vergato, Unione dell'Appennino Bolognese, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40038<br>         Clienti: <b>2</b>     </div>     </div>`)[0];
+                popup_e9ef981fc035655942880e2ceb09f964.setContent(html_5b45508da22fd6ae763f4aeaee5abcce);
+            
+        
+
+        marker_808de3ea6dd9d3c1a85d3446d36bb96a.bindPopup(popup_e9ef981fc035655942880e2ceb09f964)
+        ;
+
+        
+    
+    
+                marker_808de3ea6dd9d3c1a85d3446d36bb96a.setIcon(icon_12b4e480ea45d8a17da8aa37feb75194);
+            
+    
+            var marker_3f3cbaa50df488adf9fab154d22016ee = L.marker(
+                [44.1753081, 11.154874],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_910891249cf19e518263a1bdc2cc5ca5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_60e054d57f38e574338bda20a9bdffd7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5189dfd903fd4554925e338dcf15f6bc = $(`<div id="html_5189dfd903fd4554925e338dcf15f6bc" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Camugnano, Unione dell'Alto Reno, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40032<br>         Clienti: <b>2</b>     </div>     </div>`)[0];
+                popup_60e054d57f38e574338bda20a9bdffd7.setContent(html_5189dfd903fd4554925e338dcf15f6bc);
+            
+        
+
+        marker_3f3cbaa50df488adf9fab154d22016ee.bindPopup(popup_60e054d57f38e574338bda20a9bdffd7)
+        ;
+
+        
+    
+    
+                marker_3f3cbaa50df488adf9fab154d22016ee.setIcon(icon_910891249cf19e518263a1bdc2cc5ca5);
+            
+    
+            var marker_dc89edcf188812a7ef2dfbe23b919f93 = L.marker(
+                [44.5604694, 11.1995135],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_933a0e454b059b26cbf3d6ea9c0d48e3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_72eb0168381e66be7d1906a741d61ce6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4a40aacc93048e4ee55bbde64105ff40 = $(`<div id="html_4a40aacc93048e4ee55bbde64105ff40" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Anzola dell'Emilia, Unione Terre d'Acqua, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40011<br>         Clienti: <b>2</b>     </div>     </div>`)[0];
+                popup_72eb0168381e66be7d1906a741d61ce6.setContent(html_4a40aacc93048e4ee55bbde64105ff40);
+            
+        
+
+        marker_dc89edcf188812a7ef2dfbe23b919f93.bindPopup(popup_72eb0168381e66be7d1906a741d61ce6)
+        ;
+
+        
+    
+    
+                marker_dc89edcf188812a7ef2dfbe23b919f93.setIcon(icon_933a0e454b059b26cbf3d6ea9c0d48e3);
+            
+    
+            var marker_12c9e410d99a3cd87150230aac7555d7 = L.marker(
+                [40.2839667, 18.031],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_7a2e339f40842928dd2ec3f8ab2c3187 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_260e3f3acfd91a57753883cb47516244 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b0df518068b5f0d385f4e37ed5864314 = $(`<div id="html_b0df518068b5f0d385f4e37ed5864314" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Copertino, Lecce, Puglia, Italia</b><br>         CAP: 73010<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_260e3f3acfd91a57753883cb47516244.setContent(html_b0df518068b5f0d385f4e37ed5864314);
+            
+        
+
+        marker_12c9e410d99a3cd87150230aac7555d7.bindPopup(popup_260e3f3acfd91a57753883cb47516244)
+        ;
+
+        
+    
+    
+                marker_12c9e410d99a3cd87150230aac7555d7.setIcon(icon_7a2e339f40842928dd2ec3f8ab2c3187);
+            
+    
+            var marker_ee3c4aa63894c2245d357c42ae6b3d05 = L.marker(
+                [43.6082244, 13.3197824],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_2f294de762d60630bdba64c367a867ec = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_422b724d8b251b61bfebdb606e09524f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e65b0f6ecf0c73cb61f64d07ce2e87e2 = $(`<div id="html_e65b0f6ecf0c73cb61f64d07ce2e87e2" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Chiaravalle, Ancona, Marche, Italia</b><br>         CAP: 60033<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_422b724d8b251b61bfebdb606e09524f.setContent(html_e65b0f6ecf0c73cb61f64d07ce2e87e2);
+            
+        
+
+        marker_ee3c4aa63894c2245d357c42ae6b3d05.bindPopup(popup_422b724d8b251b61bfebdb606e09524f)
+        ;
+
+        
+    
+    
+                marker_ee3c4aa63894c2245d357c42ae6b3d05.setIcon(icon_2f294de762d60630bdba64c367a867ec);
+            
+    
+            var marker_46982a9b5c3a8118853d9d3d3a2b56dd = L.marker(
+                [44.7823908, 10.8805009],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_7a72da27f3809356bbc38b5c6f62972e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_eab125d27ff03bed58d49fb1c6ef89f9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b6556a98c234dd727e88fed66b2b3520 = $(`<div id="html_b6556a98c234dd727e88fed66b2b3520" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Carpi, Unione delle Terre d'Argine, Modena, Emilia-Romagna, Italia</b><br>         CAP: 41012<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_eab125d27ff03bed58d49fb1c6ef89f9.setContent(html_b6556a98c234dd727e88fed66b2b3520);
+            
+        
+
+        marker_46982a9b5c3a8118853d9d3d3a2b56dd.bindPopup(popup_eab125d27ff03bed58d49fb1c6ef89f9)
+        ;
+
+        
+    
+    
+                marker_46982a9b5c3a8118853d9d3d3a2b56dd.setIcon(icon_7a72da27f3809356bbc38b5c6f62972e);
+            
+    
+            var marker_b08e15260a5c590d00f85fa4fec21523 = L.marker(
+                [44.221534, 11.3178215],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_54ac8a6fb6c0f19c1e26ed027d0b8c3f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_99bf0450721db9e61d4dc7d909b3858d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a9c59ce43c55d51badbb626ced5a511a = $(`<div id="html_a9c59ce43c55d51badbb626ced5a511a" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Monghidoro, Unione dei comuni Savena-Idice, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40063<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_99bf0450721db9e61d4dc7d909b3858d.setContent(html_a9c59ce43c55d51badbb626ced5a511a);
+            
+        
+
+        marker_b08e15260a5c590d00f85fa4fec21523.bindPopup(popup_99bf0450721db9e61d4dc7d909b3858d)
+        ;
+
+        
+    
+    
+                marker_b08e15260a5c590d00f85fa4fec21523.setIcon(icon_54ac8a6fb6c0f19c1e26ed027d0b8c3f);
+            
+    
+            var marker_47cd33c012a772b75d9a7ace18e9f72f = L.marker(
+                [45.7243412, 8.8065101],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_5d608be3b241426167323c8948722093 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a2c0592666bfd4d4cc91f65695bddaf8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c6d8d5de117d435667d50e0702eaa19c = $(`<div id="html_c6d8d5de117d435667d50e0702eaa19c" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Albizzate, Varese, Lombardia, Italia</b><br>         CAP: 21041<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_a2c0592666bfd4d4cc91f65695bddaf8.setContent(html_c6d8d5de117d435667d50e0702eaa19c);
+            
+        
+
+        marker_47cd33c012a772b75d9a7ace18e9f72f.bindPopup(popup_a2c0592666bfd4d4cc91f65695bddaf8)
+        ;
+
+        
+    
+    
+                marker_47cd33c012a772b75d9a7ace18e9f72f.setIcon(icon_5d608be3b241426167323c8948722093);
+            
+    
+            var marker_12ca546aa3fd67f0a7decfacb9edd462 = L.marker(
+                [44.4779052, 12.2056074],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_6fabaacc2a2955812cd97a0467419fc2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_07317821f25078bbcd48492f8e7592b8 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ed38eb1e32d540704670bdbbfa5aaf85 = $(`<div id="html_ed38eb1e32d540704670bdbbfa5aaf85" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Ravenna, Emilia-Romagna, Italia</b><br>         CAP: 48123<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_07317821f25078bbcd48492f8e7592b8.setContent(html_ed38eb1e32d540704670bdbbfa5aaf85);
+            
+        
+
+        marker_12ca546aa3fd67f0a7decfacb9edd462.bindPopup(popup_07317821f25078bbcd48492f8e7592b8)
+        ;
+
+        
+    
+    
+                marker_12ca546aa3fd67f0a7decfacb9edd462.setIcon(icon_6fabaacc2a2955812cd97a0467419fc2);
+            
+    
+            var marker_473083af66938eded124c1ecc9bd59f0 = L.marker(
+                [44.406187, 11.2475298],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_fc807c8406412e43788aa82dcdc1bbf8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_01ef63ce92baff3509bfc7d3bef9ae03 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b7585f764f43c0ee7df710436f691453 = $(`<div id="html_b7585f764f43c0ee7df710436f691453" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Sasso Marconi, Unione dei comuni Valli del Reno, Lavino e Samoggia, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40037<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_01ef63ce92baff3509bfc7d3bef9ae03.setContent(html_b7585f764f43c0ee7df710436f691453);
+            
+        
+
+        marker_473083af66938eded124c1ecc9bd59f0.bindPopup(popup_01ef63ce92baff3509bfc7d3bef9ae03)
+        ;
+
+        
+    
+    
+                marker_473083af66938eded124c1ecc9bd59f0.setIcon(icon_fc807c8406412e43788aa82dcdc1bbf8);
+            
+    
+            var marker_86f5fdea106b49bd79c0a21768878c77 = L.marker(
+                [44.4761042, 11.335744],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_2e043954f330528b30ad9bef9b8a454b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1041cc7399464509253c421dc3e29b0c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4e8f432828c6e81a08dc74d326db249b = $(`<div id="html_4e8f432828c6e81a08dc74d326db249b" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Santo Stefano, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40136<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_1041cc7399464509253c421dc3e29b0c.setContent(html_4e8f432828c6e81a08dc74d326db249b);
+            
+        
+
+        marker_86f5fdea106b49bd79c0a21768878c77.bindPopup(popup_1041cc7399464509253c421dc3e29b0c)
+        ;
+
+        
+    
+    
+                marker_86f5fdea106b49bd79c0a21768878c77.setIcon(icon_2e043954f330528b30ad9bef9b8a454b);
+            
+    
+            var marker_eafb7c0ebd64b5cfe3dc9fd8b330796e = L.marker(
+                [45.6271165, 12.7767856],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_0c97457e228dea08554b438a7920c3fe = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_745684233351b955dd4ea853999ab637 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_0121304e1f96265a1ffe0ba977c0b47b = $(`<div id="html_0121304e1f96265a1ffe0ba977c0b47b" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Caorle, Venezia, Veneto, Italia</b><br>         CAP: 30020<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_745684233351b955dd4ea853999ab637.setContent(html_0121304e1f96265a1ffe0ba977c0b47b);
+            
+        
+
+        marker_eafb7c0ebd64b5cfe3dc9fd8b330796e.bindPopup(popup_745684233351b955dd4ea853999ab637)
+        ;
+
+        
+    
+    
+                marker_eafb7c0ebd64b5cfe3dc9fd8b330796e.setIcon(icon_0c97457e228dea08554b438a7920c3fe);
+            
+    
+            var marker_4e0bb553d8b8982ff51c7483aa37d98e = L.marker(
+                [41.1302156, 14.7862982],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_6f3a9b559b76217b88a2a9f9dde32932 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b7228e7670ad15a052cf7788b6878486 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4a9eb63cd695fd0e85b063ce1de6f603 = $(`<div id="html_4a9eb63cd695fd0e85b063ce1de6f603" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Benevento, Campania, Italia</b><br>         CAP: 82100<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_b7228e7670ad15a052cf7788b6878486.setContent(html_4a9eb63cd695fd0e85b063ce1de6f603);
+            
+        
+
+        marker_4e0bb553d8b8982ff51c7483aa37d98e.bindPopup(popup_b7228e7670ad15a052cf7788b6878486)
+        ;
+
+        
+    
+    
+                marker_4e0bb553d8b8982ff51c7483aa37d98e.setIcon(icon_6f3a9b559b76217b88a2a9f9dde32932);
+            
+    
+            var marker_fbd9a3f4b5ec385a3e98862bc4f261a2 = L.marker(
+                [44.2919577, 11.2193109],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_7a8aa8a311c76a46bb29a631ba4a2368 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4d3ac2c9ca28a5bcae8570d99a447c1b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fba17948bbd0dec604a7112f866a0baa = $(`<div id="html_fba17948bbd0dec604a7112f866a0baa" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Monzuno, Unione dell'Appennino Bolognese, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40040<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_4d3ac2c9ca28a5bcae8570d99a447c1b.setContent(html_fba17948bbd0dec604a7112f866a0baa);
+            
+        
+
+        marker_fbd9a3f4b5ec385a3e98862bc4f261a2.bindPopup(popup_4d3ac2c9ca28a5bcae8570d99a447c1b)
+        ;
+
+        
+    
+    
+                marker_fbd9a3f4b5ec385a3e98862bc4f261a2.setIcon(icon_7a8aa8a311c76a46bb29a631ba4a2368);
+            
+    
+            var marker_1e773fe46f69d6c298f69d989d68682b = L.marker(
+                [44.6556899, 10.9509658],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_35c485a45c263c77e5bdcc6baeada6b1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_63e374659beec04d392eda9745ae0451 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_14fab3e7b6a37687de697bb8ac4ae485 = $(`<div id="html_14fab3e7b6a37687de697bb8ac4ae485" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Crocetta-San Lazzaro-Modena Est, Modena, Emilia-Romagna, Italia</b><br>         CAP: 41122<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_63e374659beec04d392eda9745ae0451.setContent(html_14fab3e7b6a37687de697bb8ac4ae485);
+            
+        
+
+        marker_1e773fe46f69d6c298f69d989d68682b.bindPopup(popup_63e374659beec04d392eda9745ae0451)
+        ;
+
+        
+    
+    
+                marker_1e773fe46f69d6c298f69d989d68682b.setIcon(icon_35c485a45c263c77e5bdcc6baeada6b1);
+            
+    
+            var marker_ac9520329727ac5e727aaa16bfd9a9b3 = L.marker(
+                [44.4880079, 11.0846048],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_98dcc4d48fd906ceaeaeaab854e6a9cd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c0379f1a199b0abaee7ad44ca8e4cca7 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c4628dcee5b4bfa20b1a46b18782c2bc = $(`<div id="html_c4628dcee5b4bfa20b1a46b18782c2bc" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Monteveglio, Valsamoggia, Unione dei comuni Valli del Reno, Lavino e Samoggia, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40053<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_c0379f1a199b0abaee7ad44ca8e4cca7.setContent(html_c4628dcee5b4bfa20b1a46b18782c2bc);
+            
+        
+
+        marker_ac9520329727ac5e727aaa16bfd9a9b3.bindPopup(popup_c0379f1a199b0abaee7ad44ca8e4cca7)
+        ;
+
+        
+    
+    
+                marker_ac9520329727ac5e727aaa16bfd9a9b3.setIcon(icon_98dcc4d48fd906ceaeaeaab854e6a9cd);
+            
+    
+            var marker_46a80bd720279be0f3cfaa4d077f0a0c = L.marker(
+                [45.3149984, 10.8302298],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_850982365d4ba93dbe80bb6f52cc6dc4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_937884a5a8e53d122370108da9a8a188 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_88368a3f8ccb5a876c0ef972984aba37 = $(`<div id="html_88368a3f8ccb5a876c0ef972984aba37" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Mozzecane, Verona, Veneto, Italia</b><br>         CAP: 37060<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_937884a5a8e53d122370108da9a8a188.setContent(html_88368a3f8ccb5a876c0ef972984aba37);
+            
+        
+
+        marker_46a80bd720279be0f3cfaa4d077f0a0c.bindPopup(popup_937884a5a8e53d122370108da9a8a188)
+        ;
+
+        
+    
+    
+                marker_46a80bd720279be0f3cfaa4d077f0a0c.setIcon(icon_850982365d4ba93dbe80bb6f52cc6dc4);
+            
+    
+            var marker_3f2d89f084e7a93f563ddb9215d12075 = L.marker(
+                [41.2390922, 9.1905336],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_6106c141c45e069eb7ba48d60e83c161 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_30b9aed7c4fb1f541767c0e5faed3609 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9609b311975930496cd1fef837998f00 = $(`<div id="html_9609b311975930496cd1fef837998f00" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Lungòni/Santa Teresa Gallura, Gallura Nord-Est Sardegna, Sardigna/Sardegna, Italia</b><br>         CAP: 07028<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_30b9aed7c4fb1f541767c0e5faed3609.setContent(html_9609b311975930496cd1fef837998f00);
+            
+        
+
+        marker_3f2d89f084e7a93f563ddb9215d12075.bindPopup(popup_30b9aed7c4fb1f541767c0e5faed3609)
+        ;
+
+        
+    
+    
+                marker_3f2d89f084e7a93f563ddb9215d12075.setIcon(icon_6106c141c45e069eb7ba48d60e83c161);
+            
+    
+            var marker_541e4a413dca12b1f2f4bce23568b7d1 = L.marker(
+                [44.4918103, 11.3363036],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_480cd331a94c07fad47663ee36276b2c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_028fce0b9b3ed9bcb1f58e96758cb069 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c03672c07982f9dff97c8f76330ff7d4 = $(`<div id="html_c03672c07982f9dff97c8f76330ff7d4" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Porto-Saragozza, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40123<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_028fce0b9b3ed9bcb1f58e96758cb069.setContent(html_c03672c07982f9dff97c8f76330ff7d4);
+            
+        
+
+        marker_541e4a413dca12b1f2f4bce23568b7d1.bindPopup(popup_028fce0b9b3ed9bcb1f58e96758cb069)
+        ;
+
+        
+    
+    
+                marker_541e4a413dca12b1f2f4bce23568b7d1.setIcon(icon_480cd331a94c07fad47663ee36276b2c);
+            
+    
+            var marker_932476c76e9e7c5b7ff66401533ce5e4 = L.marker(
+                [44.6318135, 11.1847568],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_4b34d9444c6a4d809c6d2389ce774e61 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_acad8c9669fb8730f56e50a297c7c935 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_143000666ad56f9e0737f4bb975a41a7 = $(`<div id="html_143000666ad56f9e0737f4bb975a41a7" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 San Giovanni in Persiceto, Unione Terre d'Acqua, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40017<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_acad8c9669fb8730f56e50a297c7c935.setContent(html_143000666ad56f9e0737f4bb975a41a7);
+            
+        
+
+        marker_932476c76e9e7c5b7ff66401533ce5e4.bindPopup(popup_acad8c9669fb8730f56e50a297c7c935)
+        ;
+
+        
+    
+    
+                marker_932476c76e9e7c5b7ff66401533ce5e4.setIcon(icon_4b34d9444c6a4d809c6d2389ce774e61);
+            
+    
+            var marker_204f0a315756f7ffd65c90b7c89e3476 = L.marker(
+                [40.5522741, 17.7164081],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_aaffdc496377b7f9fc943e5652db61aa = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a3e11cc5f4c91250af8ee72df5fa8683 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b01d11e7802852c954e3957884c3f459 = $(`<div id="html_b01d11e7802852c954e3957884c3f459" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Latiano, Brindisi, Puglia, Italia</b><br>         CAP: 72022<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_a3e11cc5f4c91250af8ee72df5fa8683.setContent(html_b01d11e7802852c954e3957884c3f459);
+            
+        
+
+        marker_204f0a315756f7ffd65c90b7c89e3476.bindPopup(popup_a3e11cc5f4c91250af8ee72df5fa8683)
+        ;
+
+        
+    
+    
+                marker_204f0a315756f7ffd65c90b7c89e3476.setIcon(icon_aaffdc496377b7f9fc943e5652db61aa);
+            
+    
+            var marker_bbd4e82ba21eafaca3e963021f958d24 = L.marker(
+                [44.4142044, 11.3610473],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_470119a9151228bf9bad3a6b6bb9f47d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c2aab0bd4adaa781789ccc0e37ef6fd2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_037c86d1e720da5900e3ba5ae9780060 = $(`<div id="html_037c86d1e720da5900e3ba5ae9780060" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Pianoro, Unione dei comuni Savena-Idice, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40065<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_c2aab0bd4adaa781789ccc0e37ef6fd2.setContent(html_037c86d1e720da5900e3ba5ae9780060);
+            
+        
+
+        marker_bbd4e82ba21eafaca3e963021f958d24.bindPopup(popup_c2aab0bd4adaa781789ccc0e37ef6fd2)
+        ;
+
+        
+    
+    
+                marker_bbd4e82ba21eafaca3e963021f958d24.setIcon(icon_470119a9151228bf9bad3a6b6bb9f47d);
+            
+    
+            var marker_7fd05bda23f3ac1144c6712026c6b87d = L.marker(
+                [44.2153327, 11.1193495],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_f5482679dd6499c2e6447e7f2847285d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f35de9a621f211f0257f4df456ad72b9 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_756c1ec9878c34d536035cbf6912e799 = $(`<div id="html_756c1ec9878c34d536035cbf6912e799" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Grizzana Morandi, Unione dell'Appennino Bolognese, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40030<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_f35de9a621f211f0257f4df456ad72b9.setContent(html_756c1ec9878c34d536035cbf6912e799);
+            
+        
+
+        marker_7fd05bda23f3ac1144c6712026c6b87d.bindPopup(popup_f35de9a621f211f0257f4df456ad72b9)
+        ;
+
+        
+    
+    
+                marker_7fd05bda23f3ac1144c6712026c6b87d.setIcon(icon_f5482679dd6499c2e6447e7f2847285d);
+            
+    
+            var marker_a8915c14086d8d84dccc32952f0f2d2b = L.marker(
+                [44.1289919, 11.3840768],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_ecc442d7f6ffba15bdfc4c27508c734c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d59853a1d41efb8c65c42225f43da6ce = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e2a44d2bf04b7dbdd734c7ae0116cc39 = $(`<div id="html_e2a44d2bf04b7dbdd734c7ae0116cc39" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Firenzuola, Unione Montana dei Comuni del Mugello, Firenze, Toscana, Italia</b><br>         CAP: 50033<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_d59853a1d41efb8c65c42225f43da6ce.setContent(html_e2a44d2bf04b7dbdd734c7ae0116cc39);
+            
+        
+
+        marker_a8915c14086d8d84dccc32952f0f2d2b.bindPopup(popup_d59853a1d41efb8c65c42225f43da6ce)
+        ;
+
+        
+    
+    
+                marker_a8915c14086d8d84dccc32952f0f2d2b.setIcon(icon_ecc442d7f6ffba15bdfc4c27508c734c);
+            
+    
+            var marker_795a039a44c33f7e159a7db06109bbf4 = L.marker(
+                [44.2356269, 10.649897],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_e5d6c02b731efebb0f0d20868deb4686 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f6fb24c881589e66d95dbd5041b2889e = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_9dce96d4d24e51c12bb87669ed53c241 = $(`<div id="html_9dce96d4d24e51c12bb87669ed53c241" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Riolunato, Unione dei comuni del Frignano, Modena, Emilia-Romagna, Italia</b><br>         CAP: 41020<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_f6fb24c881589e66d95dbd5041b2889e.setContent(html_9dce96d4d24e51c12bb87669ed53c241);
+            
+        
+
+        marker_795a039a44c33f7e159a7db06109bbf4.bindPopup(popup_f6fb24c881589e66d95dbd5041b2889e)
+        ;
+
+        
+    
+    
+                marker_795a039a44c33f7e159a7db06109bbf4.setIcon(icon_e5d6c02b731efebb0f0d20868deb4686);
+            
+    
+            var marker_e34fffe90ab41861aacb965528fd2ce6 = L.marker(
+                [44.7732261, 11.283862],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_2a1192e946f6e26b988e02b71a71ac03 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_95dfb7b08b56abaed4aa4eb971d3726c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_f08e9e3f28625523b5529d9c1194c5b0 = $(`<div id="html_f08e9e3f28625523b5529d9c1194c5b0" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Cento, Unione Alto Ferrarese, Ferrara, Emilia-Romagna, Italia</b><br>         CAP: 44045<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_95dfb7b08b56abaed4aa4eb971d3726c.setContent(html_f08e9e3f28625523b5529d9c1194c5b0);
+            
+        
+
+        marker_e34fffe90ab41861aacb965528fd2ce6.bindPopup(popup_95dfb7b08b56abaed4aa4eb971d3726c)
+        ;
+
+        
+    
+    
+                marker_e34fffe90ab41861aacb965528fd2ce6.setIcon(icon_2a1192e946f6e26b988e02b71a71ac03);
+            
+    
+            var marker_8317bc1783647c8beada46b147d60e1f = L.marker(
+                [40.8508488, 14.3287146],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_537679325d61ae23c616b13268d60e1f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_96c249ed9d806c9673870a9b128db375 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2a270974bba47703007f27d18e9fa42f = $(`<div id="html_2a270974bba47703007f27d18e9fa42f" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Municipalità 6, Napoli, Campania, Italia</b><br>         CAP: 80147<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_96c249ed9d806c9673870a9b128db375.setContent(html_2a270974bba47703007f27d18e9fa42f);
+            
+        
+
+        marker_8317bc1783647c8beada46b147d60e1f.bindPopup(popup_96c249ed9d806c9673870a9b128db375)
+        ;
+
+        
+    
+    
+                marker_8317bc1783647c8beada46b147d60e1f.setIcon(icon_537679325d61ae23c616b13268d60e1f);
+            
+    
+            var marker_ffd10192efd05589641c6ed80dfc4062 = L.marker(
+                [44.2864902, 11.8852211],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_dfaee91facb057f67b23fe663ed9d2c4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d53c88adf021b2823cb6ef21ab94f377 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e311845d4048388851c32fc7cb4417be = $(`<div id="html_e311845d4048388851c32fc7cb4417be" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Quartiere Centro Nord, Faenza, Unione della Romagna Faentina, Ravenna, Emilia-Romagna, Italia</b><br>         CAP: 48018<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_d53c88adf021b2823cb6ef21ab94f377.setContent(html_e311845d4048388851c32fc7cb4417be);
+            
+        
+
+        marker_ffd10192efd05589641c6ed80dfc4062.bindPopup(popup_d53c88adf021b2823cb6ef21ab94f377)
+        ;
+
+        
+    
+    
+                marker_ffd10192efd05589641c6ed80dfc4062.setIcon(icon_dfaee91facb057f67b23fe663ed9d2c4);
+            
+    
+            var marker_92be7af7a7031adb99fbca0e52ceeea4 = L.marker(
+                [44.4020223, 11.5754236],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_1e82041849581ab072235f66f30e43e9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_64770cf148201af0fdcb19cb0cd9dfe0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_c2fca0c5effa0456da0f4d5c7b2674e4 = $(`<div id="html_c2fca0c5effa0456da0f4d5c7b2674e4" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Castel San Pietro Terme, Nuovo Circondario Imolese, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40024<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_64770cf148201af0fdcb19cb0cd9dfe0.setContent(html_c2fca0c5effa0456da0f4d5c7b2674e4);
+            
+        
+
+        marker_92be7af7a7031adb99fbca0e52ceeea4.bindPopup(popup_64770cf148201af0fdcb19cb0cd9dfe0)
+        ;
+
+        
+    
+    
+                marker_92be7af7a7031adb99fbca0e52ceeea4.setIcon(icon_1e82041849581ab072235f66f30e43e9);
+            
+    
+            var marker_a81d36c13cd6dccadca5da64b065954b = L.marker(
+                [44.6614931, 11.1328436],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_186313c3270740fe0b27c94812ccfcff = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e9335f133c6383cc6d812e7ce8cfdb83 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_8f387c1d1aca9ea488343223e83a4c96 = $(`<div id="html_8f387c1d1aca9ea488343223e83a4c96" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Sant'Agata Bolognese, Unione Terre d'Acqua, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40019<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_e9335f133c6383cc6d812e7ce8cfdb83.setContent(html_8f387c1d1aca9ea488343223e83a4c96);
+            
+        
+
+        marker_a81d36c13cd6dccadca5da64b065954b.bindPopup(popup_e9335f133c6383cc6d812e7ce8cfdb83)
+        ;
+
+        
+    
+    
+                marker_a81d36c13cd6dccadca5da64b065954b.setIcon(icon_186313c3270740fe0b27c94812ccfcff);
+            
+    
+            var marker_a14e92c96714bf839df1ca58c7169e6a = L.marker(
+                [37.3282253, 14.7462059],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_6102173408907445b9ba7a0ee0556984 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a23666eafc6698b4aae865834f662285 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_63573cebce4cf57c25c64b5b85e48399 = $(`<div id="html_63573cebce4cf57c25c64b5b85e48399" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Palagonia, Catania, Sicilia, Italia</b><br>         CAP: 95046<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_a23666eafc6698b4aae865834f662285.setContent(html_63573cebce4cf57c25c64b5b85e48399);
+            
+        
+
+        marker_a14e92c96714bf839df1ca58c7169e6a.bindPopup(popup_a23666eafc6698b4aae865834f662285)
+        ;
+
+        
+    
+    
+                marker_a14e92c96714bf839df1ca58c7169e6a.setIcon(icon_6102173408907445b9ba7a0ee0556984);
+            
+    
+            var marker_62ce986f3e2290c29b61d1ee044aef25 = L.marker(
+                [44.3547608, 11.7076315],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_fc1cfa60d88228b0461642248170434d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f3ebbde54e94600139d6de62612fe978 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_94b9bdab4b48c9259cc97145e626227b = $(`<div id="html_94b9bdab4b48c9259cc97145e626227b" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Centro, Imola, Nuovo Circondario Imolese, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40026<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_f3ebbde54e94600139d6de62612fe978.setContent(html_94b9bdab4b48c9259cc97145e626227b);
+            
+        
+
+        marker_62ce986f3e2290c29b61d1ee044aef25.bindPopup(popup_f3ebbde54e94600139d6de62612fe978)
+        ;
+
+        
+    
+    
+                marker_62ce986f3e2290c29b61d1ee044aef25.setIcon(icon_fc1cfa60d88228b0461642248170434d);
+            
+    
+            var marker_8e40319ad85dcf404e951fbad737c6d7 = L.marker(
+                [37.5661849, 14.2773396],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_44607f0af01623533c3e6541c19a22cd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_792d74935b3127664a9e72f47e05c7aa = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_59be379fbf8f723253dc96e097fdc09c = $(`<div id="html_59be379fbf8f723253dc96e097fdc09c" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Enna, Sicilia, Italia</b><br>         CAP: 94100<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_792d74935b3127664a9e72f47e05c7aa.setContent(html_59be379fbf8f723253dc96e097fdc09c);
+            
+        
+
+        marker_8e40319ad85dcf404e951fbad737c6d7.bindPopup(popup_792d74935b3127664a9e72f47e05c7aa)
+        ;
+
+        
+    
+    
+                marker_8e40319ad85dcf404e951fbad737c6d7.setIcon(icon_44607f0af01623533c3e6541c19a22cd);
+            
+    
+            var marker_05fdd0154decef02fa24413eb501347b = L.marker(
+                [38.0123609, 12.5237487],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_ec918d5d9e71d94fd5d66c582efdec94 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4e1f65df0d010abe40dd4c0064031361 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5a8ca41b9f07aa90301135af413dd279 = $(`<div id="html_5a8ca41b9f07aa90301135af413dd279" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Trapani, Sicilia, Italia</b><br>         CAP: 91100<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_4e1f65df0d010abe40dd4c0064031361.setContent(html_5a8ca41b9f07aa90301135af413dd279);
+            
+        
+
+        marker_05fdd0154decef02fa24413eb501347b.bindPopup(popup_4e1f65df0d010abe40dd4c0064031361)
+        ;
+
+        
+    
+    
+                marker_05fdd0154decef02fa24413eb501347b.setIcon(icon_ec918d5d9e71d94fd5d66c582efdec94);
+            
+    
+            var marker_ddfc1affdbf2cea6e6bdd16bd8c2aaff = L.marker(
+                [44.4912417, 11.3526324],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_0f1f9e9e2e9469e9e25be23470396aa3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_729be33521d65d49ea9da71142609e59 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2c38791edf33f4a9c01c46293707b285 = $(`<div id="html_2c38791edf33f4a9c01c46293707b285" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Santo Stefano, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40125<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_729be33521d65d49ea9da71142609e59.setContent(html_2c38791edf33f4a9c01c46293707b285);
+            
+        
+
+        marker_ddfc1affdbf2cea6e6bdd16bd8c2aaff.bindPopup(popup_729be33521d65d49ea9da71142609e59)
+        ;
+
+        
+    
+    
+                marker_ddfc1affdbf2cea6e6bdd16bd8c2aaff.setIcon(icon_0f1f9e9e2e9469e9e25be23470396aa3);
+            
+    
+            var marker_d9e4a9ccbde1c3ad3aecbf5a1ca7150c = L.marker(
+                [41.5405978, 12.9672385],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_a0f03e1c88c28c27b8ba324d6f836d79 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f3624c553a117812f21400de3e7a626d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_10296b964fa0dd912668dc4a81c4e52a = $(`<div id="html_10296b964fa0dd912668dc4a81c4e52a" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Sermoneta, Latina, Lazio, Italia</b><br>         CAP: 04013<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_f3624c553a117812f21400de3e7a626d.setContent(html_10296b964fa0dd912668dc4a81c4e52a);
+            
+        
+
+        marker_d9e4a9ccbde1c3ad3aecbf5a1ca7150c.bindPopup(popup_f3624c553a117812f21400de3e7a626d)
+        ;
+
+        
+    
+    
+                marker_d9e4a9ccbde1c3ad3aecbf5a1ca7150c.setIcon(icon_a0f03e1c88c28c27b8ba324d6f836d79);
+            
+    
+            var marker_659e4d828682189176d8a42c460c6f15 = L.marker(
+                [37.3254616, 14.5779721],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_839d15d200f198506355efa68ad69d70 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_175d086db88addb78ce82f6535a41170 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_90c863abc7c40cefc42897ce6f8d5112 = $(`<div id="html_90c863abc7c40cefc42897ce6f8d5112" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Mineo, Catania, Sicilia, Italia</b><br>         CAP: 95040<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_175d086db88addb78ce82f6535a41170.setContent(html_90c863abc7c40cefc42897ce6f8d5112);
+            
+        
+
+        marker_659e4d828682189176d8a42c460c6f15.bindPopup(popup_175d086db88addb78ce82f6535a41170)
+        ;
+
+        
+    
+    
+                marker_659e4d828682189176d8a42c460c6f15.setIcon(icon_839d15d200f198506355efa68ad69d70);
+            
+    
+            var marker_dc61dd75d322ec28cd70344edc8a4088 = L.marker(
+                [44.8434323, 11.1393787],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_a6e125886ebaf7db357521dc1bb7807a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c7cdb6680a4805c7ea06a24cacd6ba74 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_595e5fe9545b51e31a45beaaf6e542ae = $(`<div id="html_595e5fe9545b51e31a45beaaf6e542ae" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 San Felice sul Panaro, Unione Comuni Modenesi Area Nord, Modena, Emilia-Romagna, Italia</b><br>         CAP: 41038<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_c7cdb6680a4805c7ea06a24cacd6ba74.setContent(html_595e5fe9545b51e31a45beaaf6e542ae);
+            
+        
+
+        marker_dc61dd75d322ec28cd70344edc8a4088.bindPopup(popup_c7cdb6680a4805c7ea06a24cacd6ba74)
+        ;
+
+        
+    
+    
+                marker_dc61dd75d322ec28cd70344edc8a4088.setIcon(icon_a6e125886ebaf7db357521dc1bb7807a);
+            
+    
+            var marker_6dbc5f1e975b817d97dac4280588756e = L.marker(
+                [44.8105781, 10.1531684],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_fde35aaab2350ae3a1f68a1e3d72501d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d69f76996dd310a239ca54d9147971f6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b9c735525d09b70fcd978318db2237bb = $(`<div id="html_b9c735525d09b70fcd978318db2237bb" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Noceto, Parma, Emilia-Romagna, Italia</b><br>         CAP: 43015<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_d69f76996dd310a239ca54d9147971f6.setContent(html_b9c735525d09b70fcd978318db2237bb);
+            
+        
+
+        marker_6dbc5f1e975b817d97dac4280588756e.bindPopup(popup_d69f76996dd310a239ca54d9147971f6)
+        ;
+
+        
+    
+    
+                marker_6dbc5f1e975b817d97dac4280588756e.setIcon(icon_fde35aaab2350ae3a1f68a1e3d72501d);
+            
+    
+            var marker_c7555bf544bfec824928cc8c32cfc293 = L.marker(
+                [43.8106136, 11.2312966],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_e4fa1b91f6f2dd8562f7db11631e3456 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_dc476810000f565a4b0118ba59ed55d6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_a1e0f4335af4814755b059619890992b = $(`<div id="html_a1e0f4335af4814755b059619890992b" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Quartiere 5, Firenze, Toscana, Italia</b><br>         CAP: 50141<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_dc476810000f565a4b0118ba59ed55d6.setContent(html_a1e0f4335af4814755b059619890992b);
+            
+        
+
+        marker_c7555bf544bfec824928cc8c32cfc293.bindPopup(popup_dc476810000f565a4b0118ba59ed55d6)
+        ;
+
+        
+    
+    
+                marker_c7555bf544bfec824928cc8c32cfc293.setIcon(icon_e4fa1b91f6f2dd8562f7db11631e3456);
+            
+    
+            var marker_24e6e1275b0dedb91388012aa7fe1e2e = L.marker(
+                [41.9266208, 12.5133591],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_13d470193c7eb9cc38ac902a41f7106b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2038b5cc664be65ae2e8342e4a25d8ba = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_14f097a6bd13a21c42ed4ef1aca7e774 = $(`<div id="html_14f097a6bd13a21c42ed4ef1aca7e774" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Municipio Roma II, Roma, Roma Capitale, Lazio, Italia</b><br>         CAP: 00199<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_2038b5cc664be65ae2e8342e4a25d8ba.setContent(html_14f097a6bd13a21c42ed4ef1aca7e774);
+            
+        
+
+        marker_24e6e1275b0dedb91388012aa7fe1e2e.bindPopup(popup_2038b5cc664be65ae2e8342e4a25d8ba)
+        ;
+
+        
+    
+    
+                marker_24e6e1275b0dedb91388012aa7fe1e2e.setIcon(icon_13d470193c7eb9cc38ac902a41f7106b);
+            
+    
+            var marker_4e6af8c4a0c867d1dcca951d62d1c4bb = L.marker(
+                [40.3774861, 16.8012644],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_89d0bcc172bf9820a4e2d3f2cf0c2dba = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5987c2735e4983cab43f21b645996d9f = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_044976382f6e2ecd1c7851d39a29c32a = $(`<div id="html_044976382f6e2ecd1c7851d39a29c32a" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Bernalda, Matera, Basilicata, Italia</b><br>         CAP: 75012<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_5987c2735e4983cab43f21b645996d9f.setContent(html_044976382f6e2ecd1c7851d39a29c32a);
+            
+        
+
+        marker_4e6af8c4a0c867d1dcca951d62d1c4bb.bindPopup(popup_5987c2735e4983cab43f21b645996d9f)
+        ;
+
+        
+    
+    
+                marker_4e6af8c4a0c867d1dcca951d62d1c4bb.setIcon(icon_89d0bcc172bf9820a4e2d3f2cf0c2dba);
+            
+    
+            var marker_415ffed8cfc12adcfecd2ec47a97d0a8 = L.marker(
+                [39.6932276, 16.1246514],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_e7059df3b91a37bc53f6b6bb195fa512 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ed6d4b36e411d817b9e5b17f74842f33 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4f0346c45ab76daf2a1a472f428e212f = $(`<div id="html_4f0346c45ab76daf2a1a472f428e212f" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Altomonte, Cosenza, Calabria, Italia</b><br>         CAP: 87010<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_ed6d4b36e411d817b9e5b17f74842f33.setContent(html_4f0346c45ab76daf2a1a472f428e212f);
+            
+        
+
+        marker_415ffed8cfc12adcfecd2ec47a97d0a8.bindPopup(popup_ed6d4b36e411d817b9e5b17f74842f33)
+        ;
+
+        
+    
+    
+                marker_415ffed8cfc12adcfecd2ec47a97d0a8.setIcon(icon_e7059df3b91a37bc53f6b6bb195fa512);
+            
+    
+            var marker_f753109f011f9d8ff81724f9bf92763c = L.marker(
+                [44.6400839, 10.9198891],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_bf6409a770b91bed9293ec61d2a22d83 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0669f03576ceac20ffbdb76b63e33d8c = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_21a5a1e48d357e4037b28b0b3087ee55 = $(`<div id="html_21a5a1e48d357e4037b28b0b3087ee55" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 San Faustino-Madonnina-Quattroville, Tre Olmi, Modena, Emilia-Romagna, Italia</b><br>         CAP: 41124<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_0669f03576ceac20ffbdb76b63e33d8c.setContent(html_21a5a1e48d357e4037b28b0b3087ee55);
+            
+        
+
+        marker_f753109f011f9d8ff81724f9bf92763c.bindPopup(popup_0669f03576ceac20ffbdb76b63e33d8c)
+        ;
+
+        
+    
+    
+                marker_f753109f011f9d8ff81724f9bf92763c.setIcon(icon_bf6409a770b91bed9293ec61d2a22d83);
+            
+    
+            var marker_8edda1192e320b426e83cb534c8cccd9 = L.marker(
+                [44.1846436, 11.2298691],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_9266ea039b0366cc7969d2887ac6e480 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c1622addea34fd3d30c8a45162939cbe = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_5149fc3cd444c687f9ced367bf499094 = $(`<div id="html_5149fc3cd444c687f9ced367bf499094" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 San Benedetto Val di Sambro, Unione dell'Appennino Bolognese, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40048<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_c1622addea34fd3d30c8a45162939cbe.setContent(html_5149fc3cd444c687f9ced367bf499094);
+            
+        
+
+        marker_8edda1192e320b426e83cb534c8cccd9.bindPopup(popup_c1622addea34fd3d30c8a45162939cbe)
+        ;
+
+        
+    
+    
+                marker_8edda1192e320b426e83cb534c8cccd9.setIcon(icon_9266ea039b0366cc7969d2887ac6e480);
+            
+    
+            var marker_8cf493ff1c0d25771f21a961bf8f1555 = L.marker(
+                [44.4625077, 10.959608],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_c621c991d5ba4fc66f7f9a753d09599e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cf9b9c05e50b9397ad5c8aec6b0cf658 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_4c8454d316b1ace63bf55f11fecae247 = $(`<div id="html_4c8454d316b1ace63bf55f11fecae247" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Marano sul Panaro, Unione di comuni Terre di Castelli, Modena, Emilia-Romagna, Italia</b><br>         CAP: 41054<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_cf9b9c05e50b9397ad5c8aec6b0cf658.setContent(html_4c8454d316b1ace63bf55f11fecae247);
+            
+        
+
+        marker_8cf493ff1c0d25771f21a961bf8f1555.bindPopup(popup_cf9b9c05e50b9397ad5c8aec6b0cf658)
+        ;
+
+        
+    
+    
+                marker_8cf493ff1c0d25771f21a961bf8f1555.setIcon(icon_c621c991d5ba4fc66f7f9a753d09599e);
+            
+    
+            var marker_a2ff82d8d4324ec1f58af61e0dbc87c6 = L.marker(
+                [44.6470249, 11.534749],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_81531cef72a812d9875f4b7e05c5ce64 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_34ccee670ef288dd0c8ead04aaef77ea = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1c1050a2c5183b3082843c31ac70aedc = $(`<div id="html_1c1050a2c5183b3082843c31ac70aedc" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Baricella, Unione Terre di Pianura, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40052<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_34ccee670ef288dd0c8ead04aaef77ea.setContent(html_1c1050a2c5183b3082843c31ac70aedc);
+            
+        
+
+        marker_a2ff82d8d4324ec1f58af61e0dbc87c6.bindPopup(popup_34ccee670ef288dd0c8ead04aaef77ea)
+        ;
+
+        
+    
+    
+                marker_a2ff82d8d4324ec1f58af61e0dbc87c6.setIcon(icon_81531cef72a812d9875f4b7e05c5ce64);
+            
+    
+            var marker_d836b200df12a3094bdc93c635232c00 = L.marker(
+                [40.701666, 14.7078548],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_b7125f84898bf53e84921427a8e6c283 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9d515aa085bec8f13f6afe914d44ec16 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1ab44ae962b09382f92d20ea907f7183 = $(`<div id="html_1ab44ae962b09382f92d20ea907f7183" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Cava de' Tirreni, Salerno, Campania, Italia</b><br>         CAP: 84013<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_9d515aa085bec8f13f6afe914d44ec16.setContent(html_1ab44ae962b09382f92d20ea907f7183);
+            
+        
+
+        marker_d836b200df12a3094bdc93c635232c00.bindPopup(popup_9d515aa085bec8f13f6afe914d44ec16)
+        ;
+
+        
+    
+    
+                marker_d836b200df12a3094bdc93c635232c00.setIcon(icon_b7125f84898bf53e84921427a8e6c283);
+            
+    
+            var marker_04df266945c76a0e6a3d2cbe397638aa = L.marker(
+                [44.4414845, 11.8288794],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_e1a2c57329f8ddadf3928a7c692bc43e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_76e24b81afb800857df9b721cfdfe6e2 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_84a14c481351e542cc8f1b0291bb5b5f = $(`<div id="html_84a14c481351e542cc8f1b0291bb5b5f" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Massa Lombarda, Unione dei comuni della Bassa Romagna, Ravenna, Emilia-Romagna, Italia</b><br>         CAP: 48024<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_76e24b81afb800857df9b721cfdfe6e2.setContent(html_84a14c481351e542cc8f1b0291bb5b5f);
+            
+        
+
+        marker_04df266945c76a0e6a3d2cbe397638aa.bindPopup(popup_76e24b81afb800857df9b721cfdfe6e2)
+        ;
+
+        
+    
+    
+                marker_04df266945c76a0e6a3d2cbe397638aa.setIcon(icon_e1a2c57329f8ddadf3928a7c692bc43e);
+            
+    
+            var marker_108d35fee378711550453f10010cce9b = L.marker(
+                [44.6927703, 11.5013711],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_ea4450aebcae22467c36f0eee6d7ec2b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5aea8f1cbf1d92ec0a12c587626471e3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_75feb68dfaba51a8d469b3f2c3e5821f = $(`<div id="html_75feb68dfaba51a8d469b3f2c3e5821f" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Malalbergo, Unione Terre di Pianura, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40051<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_5aea8f1cbf1d92ec0a12c587626471e3.setContent(html_75feb68dfaba51a8d469b3f2c3e5821f);
+            
+        
+
+        marker_108d35fee378711550453f10010cce9b.bindPopup(popup_5aea8f1cbf1d92ec0a12c587626471e3)
+        ;
+
+        
+    
+    
+                marker_108d35fee378711550453f10010cce9b.setIcon(icon_ea4450aebcae22467c36f0eee6d7ec2b);
+            
+    
+            var marker_dfe95a670cd0d519c57b6e56f296c1c0 = L.marker(
+                [44.7851755, 10.3502486],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_6e7e2ade584561a772c38e4331def2d8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a2b33b3fe7d899ffd4e01f9ce17bd4f1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d03698afe08f9c59500dcce90f0e0701 = $(`<div id="html_d03698afe08f9c59500dcce90f0e0701" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Lubiana, Parma, Emilia-Romagna, Italia</b><br>         CAP: 43123<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_a2b33b3fe7d899ffd4e01f9ce17bd4f1.setContent(html_d03698afe08f9c59500dcce90f0e0701);
+            
+        
+
+        marker_dfe95a670cd0d519c57b6e56f296c1c0.bindPopup(popup_a2b33b3fe7d899ffd4e01f9ce17bd4f1)
+        ;
+
+        
+    
+    
+                marker_dfe95a670cd0d519c57b6e56f296c1c0.setIcon(icon_6e7e2ade584561a772c38e4331def2d8);
+            
+    
+            var marker_fec3bf1b4f01a08169238504f134decb = L.marker(
+                [44.5951005, 11.645319],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_8776d6367be781984dc212253f2d624d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c26c61aeada3eb9f0d9bb6531ef35c56 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_6223e5436dcfb1ce423927a8ccd7dca4 = $(`<div id="html_6223e5436dcfb1ce423927a8ccd7dca4" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Molinella, Bologna, Emilia-Romagna, Italia</b><br>         CAP: 40062<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_c26c61aeada3eb9f0d9bb6531ef35c56.setContent(html_6223e5436dcfb1ce423927a8ccd7dca4);
+            
+        
+
+        marker_fec3bf1b4f01a08169238504f134decb.bindPopup(popup_c26c61aeada3eb9f0d9bb6531ef35c56)
+        ;
+
+        
+    
+    
+                marker_fec3bf1b4f01a08169238504f134decb.setIcon(icon_8776d6367be781984dc212253f2d624d);
+            
+    
+            var marker_b1a1d4c9f0136591265a21515756121f = L.marker(
+                [43.1074099, 12.3880929],
+                {
+}
+            ).addTo(map_e12a687e7706fbca24598ff49952f3af);
+        
+    
+            var icon_4a92fe356482d42d1fdfed6fb3576b6b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "lightblue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d1abc33538c3106b57da1610de332b15 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_e18d1efe8035038d065a9cdaf8f39087 = $(`<div id="html_e18d1efe8035038d065a9cdaf8f39087" style="width: 100.0%; height: 100.0%;">     <div style="font-size:14px; line-height:1.5;">         <b>📍 Perugia, Umbria, Italia</b><br>         CAP: 06121<br>         Clienti: <b>1</b>     </div>     </div>`)[0];
+                popup_d1abc33538c3106b57da1610de332b15.setContent(html_e18d1efe8035038d065a9cdaf8f39087);
+            
+        
+
+        marker_b1a1d4c9f0136591265a21515756121f.bindPopup(popup_d1abc33538c3106b57da1610de332b15)
+        ;
+
+        
+    
+    
+                marker_b1a1d4c9f0136591265a21515756121f.setIcon(icon_4a92fe356482d42d1fdfed6fb3576b6b);
+            
+</script>
+</html>
